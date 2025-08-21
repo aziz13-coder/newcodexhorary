@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+  <Identity Name="HoraryMaster"
+            Publisher="CN=Horary Master Team"
+            Version="1.1.0.0" />
+            
+  <Properties>
+    <DisplayName>Horary Master</DisplayName>
+    <PublisherDisplayName>Horary Master Team</PublisherDisplayName>
+    <Logo>assets\StoreLogo.png</Logo>
+    <Description>Enhanced Traditional Horary Astrology Application - Professional astrological chart calculation and interpretation tool</Description>
+  </Properties>
+  
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22000.0" />
+  </Dependencies>
+  
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+  
+  <Applications>
+    <Application Id="HoraryMaster" Executable="Horary Master.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="Horary Master"
+        Description="Professional Traditional Horary Astrology Application"
+        BackgroundColor="#1e1e2e"
+        Square150x150Logo="assets\Square150x150Logo.png"
+        Square44x44Logo="assets\Square44x44Logo.png">
+        <uap:DefaultTile 
+          Wide310x150Logo="assets\Wide310x150Logo.png"
+          Square310x310Logo="assets\Square310x310Logo.png"
+          Square71x71Logo="assets\Square71x71Logo.png"
+          ShortName="Horary">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="assets\SplashScreen.png" BackgroundColor="#1e1e2e"/>
+      </uap:VisualElements>
+      
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="horary-chart">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.horary</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Horary Chart File</uap:DisplayName>
+            <uap:InfoTip>Horary astrology chart data</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+    <Capability Name="internetClient" />
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>
