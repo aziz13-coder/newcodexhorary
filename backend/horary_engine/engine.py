@@ -4947,7 +4947,9 @@ def setup_horary_logging(level: str = "INFO", log_file: Optional[str] = None) ->
     # Configure logger
     logger = logging.getLogger(__name__)
     logger.setLevel(getattr(logging, level.upper(), logging.INFO))
-    
+    # Prevent double logging with root handlers
+    logger.propagate = False
+
     # Clear existing handlers
     logger.handlers.clear()
     
@@ -5095,14 +5097,6 @@ def get_engine_info() -> Dict[str, Any]:
             "lunar_accidental_dignities": True
         }
     }
-
-
-# Initialize logging on module import
-if os.environ.get('HORARY_DISABLE_AUTO_LOGGING') != 'true':
-    try:
-        setup_horary_logging()
-    except Exception as e:
-        print(f"Warning: Failed to setup logging: {e}")
 
 
 # Validate configuration on module import (unless disabled)
